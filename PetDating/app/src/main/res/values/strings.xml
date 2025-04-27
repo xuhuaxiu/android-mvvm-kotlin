@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Pet Dating</string>
+    <string name="exit_app_message">再按一次退出程序</string>
+    <string name="loading">请求中...</string>
 </resources>

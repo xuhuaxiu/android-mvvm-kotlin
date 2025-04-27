@@ -1,23 +1,48 @@
 package com.example.petdating.ui.activity
 
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import com.blankj.utilcode.util.ToastUtils
 import com.example.petdating.R
 import com.example.petdating.base.activity.BaseActivity
+import com.example.petdating.databinding.ActivityMainBinding
+import com.example.petdating.viewmodel.MainViewModel
+import java.util.ArrayList
 
-class MainActivity : BaseActivity() {
+class MainActivity: BaseActivity<MainViewModel, ActivityMainBinding>() {
+    var exitTime = 0L
 
-    override fun getLayoutResId() = R.layout.activity_main
+    override fun layoutId(): Int = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+    override fun viewId(): View = findViewById(R.id.main)
+
+    override fun initView(savedInstanceState: Bundle?) {
+       onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+           override fun handleOnBackPressed() {
+         /*      val nav = Navigation.findNavController(this@MainActivity, R.id.host_fragment)
+               if (nav.currentDestination != null && nav.currentDestination!!.id != R.id.mainFragment) {
+                   // 如果当前界面不是主页，那么直接调用返回即可
+                   nav.navigateUp()
+               } else {
+                   // 是主页, 两秒内再次点击退出
+                   if (System.currentTimeMillis() - exitTime > 2000) {
+                       ToastUtils.showShort(getString(R.string.exit_app_message))
+                       exitTime = System.currentTimeMillis()
+                   } else {
+                       finish()
+                   }
+               }*/
+           }
+
+       })
     }
+
+
 }

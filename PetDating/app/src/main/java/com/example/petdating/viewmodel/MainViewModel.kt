@@ -4,7 +4,8 @@ import com.example.petdating.base.viewmodel.BaseViewModel
 
 /**
  *created by xiuer on
- *remark:
+ *remark: tab页共享ViewModel
  **/
 class MainViewModel: BaseViewModel() {
+
 }
