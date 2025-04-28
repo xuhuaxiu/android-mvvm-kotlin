@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import com.blankj.utilcode.util.ToastUtils
 import com.example.petdating.R
 import com.example.petdating.base.activity.BaseActivity
@@ -26,7 +27,7 @@ class MainActivity: BaseActivity<MainViewModel, ActivityMainBinding>() {
     override fun initView(savedInstanceState: Bundle?) {
        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
            override fun handleOnBackPressed() {
-         /*      val nav = Navigation.findNavController(this@MainActivity, R.id.host_fragment)
+         /*      val nav = Navigation.findNavController(this@MainActivity, R.id.nav_host_fragment)
                if (nav.currentDestination != null && nav.currentDestination!!.id != R.id.mainFragment) {
                    // 如果当前界面不是主页，那么直接调用返回即可
                    nav.navigateUp()
@@ -44,5 +45,9 @@ class MainActivity: BaseActivity<MainViewModel, ActivityMainBinding>() {
        })
     }
 
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = findNavController(R.id.nav_host_fragment)
+        return navController.navigateUp() || super.onSupportNavigateUp()
+    }
 
 }

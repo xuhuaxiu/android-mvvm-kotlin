@@ -48,7 +48,7 @@ abstract class BaseVmActivity<VM: BaseViewModel> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // 根据是否使用DataBinding 以不同方式加载布局
-        if (isUserDb) {
+        if (!isUserDb) {
             setContentView(layoutId())
         } else {
             initDataBind()

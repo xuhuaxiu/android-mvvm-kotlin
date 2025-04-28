@@ -16,6 +16,6 @@ class MainFragment: TabFragment<BaseViewModel, FragmentMainBinding>() {
     override fun layoutId(): Int = R.layout.fragment_main
 
     override fun initView(savedInstanceState: Bundle?) {
-        // mDatabind.mainViewpager.initMain(this)
+       //  mDatabind.mainViewpager.initMain(this)
     }
 }

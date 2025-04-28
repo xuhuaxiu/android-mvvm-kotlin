@@ -7,7 +7,7 @@ import com.example.petdating.lifecycle.EventLiveData
  *created by xiuer on
  *remark: ViewModel的基类 使用ViewModel类，放弃AndroidViewModel，原因：用处不大 完全有其他方式获取Application上下文
  **/
-abstract class BaseViewModel : ViewModel(){
+open class BaseViewModel : ViewModel(){
     val loadingChange: UiLoadingChange by lazy { UiLoadingChange() }
 
     /**
