@@ -4,6 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.petdating.ui.fragment.tab.HomeFragment
+import com.example.petdating.ui.fragment.tab.MeFragment
+import com.example.petdating.ui.fragment.tab.WelfareFragment
 
 /**
  *created by xiuer on
@@ -22,12 +24,10 @@ fun ViewPager2.initMain(fragment: Fragment): ViewPager2 {
                     HomeFragment()
                 }
                 1 -> {
-                    HomeFragment()
-                    // WelfareFragment()
+                    WelfareFragment()
                 }
                 2 ->{
-                    HomeFragment()
-                    // MeFragment()
+                    MeFragment()
                 }
                 else -> {
                     HomeFragment()

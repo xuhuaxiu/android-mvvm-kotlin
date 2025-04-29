@@ -17,6 +17,11 @@ abstract class BaseVmDbFragment<VM : BaseViewModel, DB : ViewDataBinding> : Base
     //该类绑定的ViewDataBinding
     lateinit var mDatabind: DB
 
+    /**
+     * 当前Fragment绑定的视图布局
+     */
+    abstract override fun layoutId(): Int
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
