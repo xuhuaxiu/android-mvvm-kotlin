@@ -41,21 +41,30 @@ android {
 }
 
 dependencies {
+    // 底部导航
+    implementation (libs.bottomnavigationviewex)
+    // blankj
+    implementation (libs.utilcodex)
 
-    implementation (libs.utilcodex) // blankj
-    implementation (libs.androidautosize) // 屏幕适配
+    // 屏幕适配
+    implementation (libs.androidautosize)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+
+    // Material Components 支持
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.androidx.legacy.support.v4)
+    // jetpack
     implementation(libs.androidx.lifecycle.livedata.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.fragment.ktx)
     implementation(libs.androidx.navigation.fragment)
+
+    implementation(libs.androidx.fragment.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

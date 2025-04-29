@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Pet Dating</string>
+    <string name="home_menu">首页</string>
+    <string name="welfare_menu">今日福利</string>
+    <string name="me_menu">我的</string>
+
     <string name="exit_app_message">再按一次退出程序</string>
     <string name="loading">请求中...</string>
 </resources>

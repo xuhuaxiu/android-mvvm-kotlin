@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_home"
+        android:checked="true"
+        android:icon="@mipmap/app_icon_home"
+        android:title="@string/home_menu" />
+    <item
+        android:id="@+id/menu_welfare"
+        android:icon="@mipmap/app_icon_welfare"
+        android:title="@string/welfare_menu" />
+
+    <item
+        android:id="@+id/menu_me"
+        android:icon="@mipmap/app_icon_mine"
+        android:title="@string/me_menu" />
+
+</menu>
