@@ -8,17 +8,18 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.activity.MainActivity">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/mainViewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
-        <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/mainBottom"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@color/white"
             app:itemIconSize="20dp"

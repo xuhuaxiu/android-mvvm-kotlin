@@ -41,8 +41,6 @@ android {
 }
 
 dependencies {
-    // 底部导航
-    implementation (libs.bottomnavigationviewex)
     // blankj
     implementation (libs.utilcodex)
 

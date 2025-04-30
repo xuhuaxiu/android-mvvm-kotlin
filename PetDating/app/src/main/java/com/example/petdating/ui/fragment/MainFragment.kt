@@ -1,12 +1,10 @@
 package com.example.petdating.ui.fragment
 
 import android.os.Bundle
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.petdating.R
 import com.example.petdating.base.fragment.TabFragment
 import com.example.petdating.base.viewmodel.BaseViewModel
 import com.example.petdating.databinding.FragmentMainBinding
-import com.example.petdating.ext.init
 import com.example.petdating.ext.initMain
 
 /**
@@ -22,19 +20,23 @@ class MainFragment: TabFragment<BaseViewModel, FragmentMainBinding>() {
         mDatabind.mainViewpager.initMain(this)
 
         // 初始化导航栏目
-        /*mDatabind.mainBottom.init {
-            when (it) {
+        mDatabind.mainBottom.setOnItemSelectedListener { item ->
+            when (item.itemId) {
                 R.id.menu_home -> {
-                    mDatabind.mainViewpager.setCurrentItem(0, false)
+                    mDatabind.mainViewpager.setCurrentItem(0,false)
+                    true
                 }
                 R.id.menu_welfare -> {
-                    mDatabind.mainViewpager.setCurrentItem(1, false)
+                    mDatabind.mainViewpager.setCurrentItem(1,false)
+                    true
                 }
-                R.id.menu_me ->{
-                    mDatabind.mainViewpager.setCurrentItem(2, false)
+                R.id.menu_me -> {
+                    mDatabind.mainViewpager.setCurrentItem(2,false)
+                    true
                 }
+                else -> false
             }
-        }*/
+        }
 
     }
 }
