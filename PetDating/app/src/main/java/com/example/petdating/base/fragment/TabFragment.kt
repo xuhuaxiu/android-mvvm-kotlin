@@ -16,6 +16,9 @@ abstract class TabFragment<VM: BaseViewModel, DB: ViewDataBinding>:  BaseFragmen
      */
     abstract override fun layoutId(): Int
 
+    /**
+     * 当前需要初始化加载的view
+     */
     abstract override fun initView(savedInstanceState: Bundle?)
 
     /**

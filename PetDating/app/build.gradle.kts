@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("kotlin-kapt") //Kotlin 注解处理工具
+    id ("kotlin-parcelize")  // 替代弃用的 kotlin-android-extensions
 }
 
 android {
@@ -47,6 +48,11 @@ dependencies {
     // 屏幕适配
     implementation (libs.androidautosize)
 
+    // 第三方recyclerview
+    implementation (libs.xx)
+
+    // 微信开源项目，替代SP
+    implementation (libs.mmkv.static)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
 
@@ -62,7 +68,12 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.navigation.fragment)
 
+    // retrofit2
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

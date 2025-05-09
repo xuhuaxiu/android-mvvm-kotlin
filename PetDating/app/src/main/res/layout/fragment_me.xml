@@ -1,21 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
     </data>
 
-    <FrameLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.fragment.tab.WelfareFragment">
-
-        <TextView
+        android:layout_height="match_parent">
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Hello me" />
+            android:background="@color/white">
 
-    </FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                tools:context=".ui.fragment.tab.WelfareFragment">
+
+                <include
+                    android:id="@+id/head_un_login"
+                    layout="@layout/app_layout_my_info_unlogin" />
+
+                <include
+                    android:id="@+id/head_login"
+                    layout="@layout/app_layout_my_info_login"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 </layout>
