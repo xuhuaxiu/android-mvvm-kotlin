@@ -20,7 +20,7 @@ import org.json.JSONObject
 class MeViewModel : BaseViewModel() {
 
     val  model1Result = MutableLiveData<ResultState<Model1Bean>>()
-    val  model2Result = MutableLiveData<ResultState<Model2Bean>>()
+    val  model2Result = MutableLiveData<ResultState<List<Model2Bean>>>()
     val  model3Result = MutableLiveData<ResultState<Model3Bean>>()
 
 
@@ -48,7 +48,7 @@ class MeViewModel : BaseViewModel() {
 
     }
 
-    private suspend fun getModel2(): ApiResponse<Model2Bean>{
+    private suspend fun getModel2(): ApiResponse<List<Model2Bean>>{
         val token = CacheUtil.getToken()
         val body = BaseNetUtil.buildCommonParams(JSONObject())
         return apiService.getListInfo(token,body)

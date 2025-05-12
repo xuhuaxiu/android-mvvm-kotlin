@@ -1,9 +1,10 @@
 package com.example.petdating.network
 
 /**
- * 作者　: linmin
- * 描述　: 错误枚举类
- */
+ *created by xiuer on
+ *remark: 错误枚举类
+ **/
+
 enum class Error(private val code: Int, private val err: String) {
 
     /**

@@ -9,10 +9,6 @@ import kotlinx.parcelize.Parcelize
  **/
 @Parcelize
 data class Model2Bean(
-    val label1:  String? = null,
-    val label2:  String? = null,
-    val label3:  String? = null,
-    val label4:  String? = null,
-    val label5:  String? = null,
-    val label6:  String? = null
+    val label:  String? = null,
+    val img:  Int? = null,
 ): Parcelable

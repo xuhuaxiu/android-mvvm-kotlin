@@ -6,6 +6,7 @@ import com.tencent.mmkv.MMKV
 object CacheUtil {
     private const val appKey = "app"
 
+
     /**
      * 设置token信息
      */

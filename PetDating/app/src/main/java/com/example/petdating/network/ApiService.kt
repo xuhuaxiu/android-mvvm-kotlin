@@ -5,10 +5,12 @@ import com.example.petdating.model.Model2Bean
 import com.example.petdating.model.Model3Bean
 import retrofit2.http.Body
 import retrofit2.http.Header
+import retrofit2.http.Headers
+import retrofit2.http.POST
 
 /**
  *created by xiuer on
- *remark: 网络api
+ *remark: 网络api, 理论上是请求接口拿数据，但是我没有写接口，所以获取不到数据
  **/
 interface ApiService {
     companion object {
@@ -19,8 +21,8 @@ interface ApiService {
     /**
      * 基础信息
      */
-    // @Headers("Content-Type:application/jose; charset=utf-8")
-    // @POST("接口")
+     @Headers("Content-Type:application/jose; charset=utf-8")
+     @POST("/baseInfo")
     suspend fun getBaseInfo(
         @Header("Authorization") Authorization: String,
         @Body map: Map<String, @JvmSuppressWildcards Any>
@@ -34,7 +36,7 @@ interface ApiService {
     suspend fun getListInfo(
         @Header("Authorization") Authorization: String,
         @Body map: Map<String, @JvmSuppressWildcards Any>
-    ): ApiResponse<Model2Bean>
+    ): ApiResponse<List<Model2Bean>>
 
     /**
      * 列表信息

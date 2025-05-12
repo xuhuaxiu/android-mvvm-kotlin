@@ -72,6 +72,10 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
+    // glide 加载图片
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
+
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.common)
     testImplementation(libs.junit)

@@ -23,14 +23,22 @@
 
                 <include
                     android:id="@+id/head_un_login"
-                    layout="@layout/app_layout_my_info_unlogin" />
+                    layout="@layout/app_layout_my_info_unlogin"
+                    />
 
                 <include
                     android:id="@+id/head_login"
                     layout="@layout/app_layout_my_info_login"
                     android:visibility="gone" />
 
+                <LinearLayout
+                    android:id="@+id/ll_column"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
             </LinearLayout>
+
         </ScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
