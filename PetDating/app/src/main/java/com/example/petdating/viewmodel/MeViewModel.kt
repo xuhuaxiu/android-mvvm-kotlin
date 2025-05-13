@@ -38,8 +38,10 @@ class MeViewModel : BaseViewModel() {
                 requestAsync(step3, model3Result)
             }
         }
-
     }
+
+
+    // 以下相当于 Repository --------------------------------------
 
     private suspend fun getModel1(): ApiResponse<Model1Bean>{
         val token = CacheUtil.getToken()

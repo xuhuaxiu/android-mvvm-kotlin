@@ -21,7 +21,7 @@ class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
     override fun layoutId(): Int = R.layout.fragment_me
 
     override fun initView(savedInstanceState: Bundle?) {
-        initUnmLoginData()
+        initUnmLoginData() // 没接口，写点moc数据
         mDatabind.refresh.init {
             refreshData()
             mDatabind.refresh.isRefreshing = false
@@ -113,7 +113,6 @@ class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
         itemBinding.tvItemLabel.text = rsp.label
         Glide.with(this).load(rsp.img).into(itemBinding.ivIcon)
 
-        //itemBinding.ivIcon.setImageResource(rsp.img)
 
         // 3. 设置点击事件
         itemBinding.root.setOnClickListener {
