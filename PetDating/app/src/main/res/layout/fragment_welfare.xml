@@ -1,21 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="viewmodel"
+            type="com.example.petdating.viewmodel.WelfareViewModel" />
 
+        <variable
+            name="click"
+            type="com.example.petdating.ui.fragment.tab.WelfareFragment.ProxyClick" />
     </data>
 
-    <FrameLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.fragment.tab.WelfareFragment">
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/demo_text"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Hello welfafe" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="50dp"
+            android:textSize="20dp"
+            android:text="@={viewmodel.text}"
+            android:onClick="@{()->click.check()}"
+            />
 
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

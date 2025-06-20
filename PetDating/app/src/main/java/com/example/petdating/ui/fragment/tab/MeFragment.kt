@@ -1,6 +1,7 @@
 package com.example.petdating.ui.fragment.tab
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import androidx.lifecycle.Observer
 import com.blankj.utilcode.util.LogUtils
@@ -9,6 +10,7 @@ import com.example.petdating.R
 import com.example.petdating.base.fragment.TabFragment
 import com.example.petdating.databinding.AppLayoutMyInfoItemBinding
 import com.example.petdating.databinding.FragmentMeBinding
+import com.example.petdating.ext.clickNoRepeat
 import com.example.petdating.ext.init
 import com.example.petdating.ext.parseState
 import com.example.petdating.ext.visibleOrGone
@@ -115,9 +117,34 @@ class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
 
 
         // 3. 设置点击事件
-        itemBinding.root.setOnClickListener {
+        itemBinding.root.clickNoRepeat {
             // 根据item.type处理不同的点击事件
+            // 根据item.type处理不同的点击事件
+            val label: String? = rsp.label
+            when(label) {
+                "item1" -> {
+                    LogUtils.d("xiuer-------> click item1")
+
+                }
+                "item2" -> {
+
+                    LogUtils.d("xiuer-------> click item2")
+                }
+                "item3" -> {
+
+                    LogUtils.d("xiuer-------> click item3")
+                }
+                "item4" -> {
+
+                    LogUtils.d("xiuer-------> click item4")
+                }
+                "item5" -> {
+
+                    LogUtils.d("xiuer-------> click item5")
+                }
+            }
         }
+
 
         // 4. 将子布局添加到父容器
         mDatabind.llColumn.addView(itemBinding.root)
