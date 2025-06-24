@@ -10,6 +10,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Model1Bean(
     val name:  String? = null,
-    val img:  String? = null,
+    val img:  Int? = null,
     val mobile:  String? = null
 ): Parcelable

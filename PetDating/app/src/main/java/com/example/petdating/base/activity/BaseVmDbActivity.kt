@@ -19,10 +19,7 @@ abstract class BaseVmDbActivity<VM: BaseViewModel, DB: ViewDataBinding> : BaseVm
     lateinit var mDatabind: DB
     override fun onCreate(savedInstanceState: Bundle?) {
         userDataBinding(true)
-        // 锁定方向
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
         super.onCreate(savedInstanceState)
-
     }
 
     /**

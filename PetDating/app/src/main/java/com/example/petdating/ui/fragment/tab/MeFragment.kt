@@ -1,10 +1,10 @@
 package com.example.petdating.ui.fragment.tab
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.lifecycle.Observer
 import com.blankj.utilcode.util.LogUtils
+import com.blankj.utilcode.util.ToastUtils
 import com.bumptech.glide.Glide
 import com.example.petdating.R
 import com.example.petdating.base.fragment.TabFragment
@@ -17,13 +17,18 @@ import com.example.petdating.ext.visibleOrGone
 import com.example.petdating.model.Model2Bean
 import com.example.petdating.utils.CacheUtil
 import com.example.petdating.viewmodel.MeViewModel
+import com.xhqb.jetpackmvvm.base.appContext
 
 class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
 
+
     override fun layoutId(): Int = R.layout.fragment_me
 
+
     override fun initView(savedInstanceState: Bundle?) {
-        initUnmLoginData() // 没接口，写点moc数据
+
+        refreshData()
+        // 等价于直接设置监听：mDatabind.refresh.setOnRefreshListener
         mDatabind.refresh.init {
             refreshData()
             mDatabind.refresh.isRefreshing = false
@@ -31,27 +36,24 @@ class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
 
     }
 
+
     // 刷新后获取列表数据，用户名字，图片
     private fun refreshData() {
         val isLogin = CacheUtil.isLogin()
-        LogUtils.d("xiuer-------------> $isLogin")
+        LogUtils.d("xiuer-------------> 登录没 $isLogin")
         mDatabind.headLogin.root.visibleOrGone(isLogin)
         mDatabind.headUnLogin.root.visibleOrGone(!isLogin)
-        if (isLogin) mViewModel.refreshMe()
+        if (isLogin) mViewModel.refreshMe() else  initUnmLoginData()
     }
 
+
+    // // 未登录时，没接口，写点moc数据
     private fun initUnmLoginData() {
-        val list: List<Model2Bean> = listOf(
-            Model2Bean(label = "item1", img = R.mipmap.app_image_icon_02),
-            Model2Bean(label = "item2", img = R.mipmap.app_image_icon_02),
-            Model2Bean(label = "item3", img = R.mipmap.app_image_icon_02),
-            Model2Bean(label = "item4", img = R.mipmap.app_image_icon_02),
-            Model2Bean(label = "item5", img = R.mipmap.app_image_icon_02)
-        )
-        for (item in list) {
+        for (item in mViewModel.list) {
             addItem(item)
         }
     }
+
 
     override fun createObserver() {
         super.createObserver()
@@ -60,13 +62,14 @@ class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
             Observer { it ->
                 parseState(
                     it,
-                    { // 成功
-                        LogUtils.d("xiuer-------------> success")
+                    {
+                        LogUtils.d("xiuer-------------> model1Result success")
+                        mDatabind.headLogin.tvAppInfoName.text = it.name
                         mDatabind.headLogin.tvAppInfoPhoneNumber.text = it.mobile
+                        Glide.with(this).load(it.img).into(mDatabind.headLogin.tvAppInfoImg)
                     },
-                    { // 失败
-                        LogUtils.d("xiuer-------------> fail")
-
+                    {
+                        LogUtils.d("xiuer-------------> model1Result fail")
                     })
             }
         )
@@ -76,15 +79,15 @@ class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
             Observer { it ->
                 parseState(
                     it,
-                    { // 成功
-
+                    {
+                        LogUtils.d("xiuer------------->model2Result  ${it}")
                         mDatabind.llColumn.removeAllViews()
                         for (rsp in it) {
                             addItem(rsp)
                         }
                     },
-                    { // 失败
-
+                    {
+                        LogUtils.d("xiuer-------------> model2Result fail")
                     })
             }
         )
@@ -93,15 +96,19 @@ class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
             this,
             Observer { it ->
                 parseState(it,
-                    { // 成功
-
+                    {
+                        mDatabind.headLogin.tvMyInfoOne.text=it.label1
+                        mDatabind.headLogin.tvMyInfoTwo.text=it.label2
+                        mDatabind.headLogin.tvMyInfoThree.text=it.label3
+                        LogUtils.d("xiuer-------------> model3Result ${it}")
                     },
-                    { // 失败
-
+                    {
+                        LogUtils.d("xiuer------------->model3Result  fail")
                     })
             }
         )
     }
+
 
     private fun addItem(rsp: Model2Bean) {
         // 1. 使用 ViewBinding 加载子布局
@@ -115,36 +122,14 @@ class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
         itemBinding.tvItemLabel.text = rsp.label
         Glide.with(this).load(rsp.img).into(itemBinding.ivIcon)
 
-
         // 3. 设置点击事件
         itemBinding.root.clickNoRepeat {
             // 根据item.type处理不同的点击事件
-            // 根据item.type处理不同的点击事件
             val label: String? = rsp.label
-            when(label) {
-                "item1" -> {
-                    LogUtils.d("xiuer-------> click item1")
+            LogUtils.d("xiuer------------->click  ${label}")
+            ToastUtils.showLong("you click  ${label}")
 
-                }
-                "item2" -> {
-
-                    LogUtils.d("xiuer-------> click item2")
-                }
-                "item3" -> {
-
-                    LogUtils.d("xiuer-------> click item3")
-                }
-                "item4" -> {
-
-                    LogUtils.d("xiuer-------> click item4")
-                }
-                "item5" -> {
-
-                    LogUtils.d("xiuer-------> click item5")
-                }
-            }
         }
-
 
         // 4. 将子布局添加到父容器
         mDatabind.llColumn.addView(itemBinding.root)
