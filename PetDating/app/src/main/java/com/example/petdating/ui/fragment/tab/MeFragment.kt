@@ -31,7 +31,6 @@ class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
         // 等价于直接设置监听：mDatabind.refresh.setOnRefreshListener
         mDatabind.refresh.init {
             refreshData()
-            mViewModel.updateFirstName()
             mDatabind.refresh.isRefreshing = false
         }
 
