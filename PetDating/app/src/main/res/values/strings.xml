@@ -7,4 +7,7 @@
 
     <string name="exit_app_message">再按一次退出程序</string>
     <string name="loading">请求中...</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

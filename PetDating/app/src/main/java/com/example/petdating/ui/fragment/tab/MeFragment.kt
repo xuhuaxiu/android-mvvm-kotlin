@@ -31,10 +31,12 @@ class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
         // 等价于直接设置监听：mDatabind.refresh.setOnRefreshListener
         mDatabind.refresh.init {
             refreshData()
+            mViewModel.updateFirstName()
             mDatabind.refresh.isRefreshing = false
         }
 
     }
+
 
 
     // 刷新后获取列表数据，用户名字，图片

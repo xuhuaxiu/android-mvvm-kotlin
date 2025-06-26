@@ -25,10 +25,8 @@ class MeViewModel : BaseViewModel() {
         Model2Bean(label = "item4", img = R.mipmap.app_image_icon_02),
         Model2Bean(label = "item5", img = R.mipmap.app_image_icon_02)
     )
-
     //  private val repository = MeRepository()
    private val repository = MockMeRepository()
-
     private val _model1Result = MutableLiveData<ResultState<Model1Bean>>()
     val model1Result: LiveData<ResultState<Model1Bean>> = _model1Result
 
