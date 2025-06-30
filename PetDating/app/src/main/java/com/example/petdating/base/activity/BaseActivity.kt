@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Looper
 import androidx.databinding.ViewDataBinding
 import com.example.petdating.base.viewmodel.BaseViewModel
+import com.example.petdating.utils.LoadingDialog
 import me.jessyan.autosize.AutoSizeCompat
 import me.jessyan.autosize.AutoSizeConfig
 
@@ -30,11 +31,14 @@ abstract class BaseActivity<VM: BaseViewModel, DB: ViewDataBinding>: BaseVmDbAct
      * 打开等待框
      */
     override fun showLoading(message: String) {
+        LoadingDialog.show(supportFragmentManager)
     }
     /**
      * 关闭等待框
      */
     override fun dismissLoading() {
+        LoadingDialog.dismiss(supportFragmentManager)
+
     }
 
     /**

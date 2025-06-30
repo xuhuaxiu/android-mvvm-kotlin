@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import com.example.petdating.base.viewmodel.BaseViewModel
+import com.example.petdating.utils.LoadingDialog
 
 /**
  *created by xiuer on
@@ -38,13 +39,14 @@ abstract class BaseFragment<VM : BaseViewModel, DB : ViewDataBinding> : BaseVmDb
      * 打开等待框
      */
     override fun showLoading(message: String) {
-
+        LoadingDialog.show(requireActivity().supportFragmentManager)
     }
 
     /**
      * 关闭等待框
      */
     override fun dismissLoading() {
+        LoadingDialog.dismiss(requireActivity().supportFragmentManager)
 
     }
 }

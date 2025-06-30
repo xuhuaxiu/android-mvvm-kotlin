@@ -76,6 +76,10 @@ dependencies {
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
 
+    //dialog
+    implementation (libs.lifecycle)
+    implementation (libs.core)
+
     implementation(libs.androidx.fragment.ktx)
     implementation(libs.common)
     testImplementation(libs.junit)
