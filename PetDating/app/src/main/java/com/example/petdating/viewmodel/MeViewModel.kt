@@ -39,8 +39,7 @@ class MeViewModel : BaseViewModel() {
     //  刷新需要变更的数据
     fun refreshMe() {
         LogUtils.d("xiuer-------------> refreshMe")
-
-        // 使用 viewModelScope 启动一个协程
+        // 使用 viewModelScope 启动一个协程，默认在主线程
         viewModelScope.launch {
             // 使用 supervisorScope 启动一个可并行子协程的作用域（即使其中一个失败，也不会取消其他）
             supervisorScope {

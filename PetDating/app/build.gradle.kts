@@ -27,6 +27,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            isDebuggable = true      // Kotlin DSL 正确写法
+            isProfileable = true     // Kotlin DSL 正确写法
+        }
     }
     buildFeatures {
         dataBinding = true

@@ -2,6 +2,7 @@ package com.example.petdating.ext
 
 import androidx.lifecycle.LifecycleService
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.petdating.base.activity.BaseVmDbActivity
 import com.example.petdating.base.fragment.BaseVmFragment
 import com.example.petdating.base.viewmodel.BaseViewModel
@@ -10,7 +11,12 @@ import com.example.petdating.network.BaseResponse
 import com.example.petdating.network.ResultState
 import com.example.petdating.network.paresException
 import com.example.petdating.network.paresResult
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.withContext
 
 /**
  *created by xiuer on
@@ -30,6 +36,31 @@ suspend fun <T> BaseViewModel.requestAsync(step: Deferred<BaseResponse<T>>, resu
         resultState.paresException(it)
     }
 }
+
+
+/**
+ * 同步 request 解析数据并且返回结果
+ * @param block 请求体方法
+ * @param resultState 请求回调的ResultState数据
+ */
+suspend fun <T> BaseViewModel.requestSync(
+    block: suspend () -> BaseResponse<T>,
+    resultState: MutableLiveData<ResultState<T>>
+): BaseResponse<T>? {
+    runCatching {
+        withContext(Dispatchers.IO) {
+            block()
+        }
+    }.onSuccess {
+        resultState.paresResult(it)
+        return it
+    }.onFailure {
+        resultState.paresException(it)
+        return null
+    }
+    return null
+}
+
 
 /**
  * 显示页面状态，这里有个技巧，成功回调在第一个，其后两个带默认值的回调可省
