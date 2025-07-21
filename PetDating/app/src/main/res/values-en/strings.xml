@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Pet Dating</string>
+    <string name="home_menu">Home</string>
+    <string name="welfare_menu">Welfare</string>
+    <string name="me_menu">Me</string>
+    <string name="login_and_register">Login/Register</string>
+
+    <string name="exit_app_message">Try again to exit</string>
+    <string name="loading">Loading......</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>

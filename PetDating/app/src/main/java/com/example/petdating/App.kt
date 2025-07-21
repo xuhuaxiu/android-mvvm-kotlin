@@ -1,8 +1,10 @@
 package com.example.petdating
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStore
 import androidx.lifecycle.ViewModelStoreOwner
+import com.example.petdating.utils.LocaleUtil
 import com.tencent.mmkv.MMKV
 
 /**
@@ -28,6 +30,11 @@ import com.tencent.mmkv.MMKV
         super.onCreate()
         _instance = this // 将当前实例赋值给 _instance
         initData()
+    }
+
+    override fun attachBaseContext(context: Context) {
+        val lang = LocaleUtil.resetToSystemLanguage(context)
+        super.attachBaseContext(lang)
     }
 
 
