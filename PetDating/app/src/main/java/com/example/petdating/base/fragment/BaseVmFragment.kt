@@ -10,11 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.petdating.R
 import com.example.petdating.base.viewmodel.BaseViewModel
 import com.example.petdating.ext.getVmClazz
 import com.example.petdating.model.NetState
 import com.example.petdating.utils.NetworkStateManager
-import java.lang.reflect.ParameterizedType
+import com.gyf.immersionbar.ImmersionBar
 
 /**
  *created by xiuer on
@@ -28,6 +29,7 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
     lateinit var mActivity: AppCompatActivity
 
     private var isFirst: Boolean = true
+    private var isFullScreen: Boolean = false
 
     abstract fun layoutId(): Int
 
@@ -53,8 +55,25 @@ abstract class BaseVmFragment<VM : BaseViewModel> : Fragment() {
         onVisible()
         registorDefUIChange()
         initData()
+
     }
 
+    override fun onResume() {
+        super.onResume()
+        fullScreen()
+    }
+
+    open fun setFullScreen(isFull:Boolean){
+        isFullScreen = isFull
+    }
+
+    private fun fullScreen() {
+        if (isFullScreen) {
+            ImmersionBar.with(this).transparentStatusBar().statusBarColor(R.color.transparent).init()
+        }else {
+            ImmersionBar.with(this).statusBarColor(R.color.colorPrimary).init()
+        }
+    }
     /**
      * 创建viewModel
      */

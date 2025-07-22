@@ -24,9 +24,8 @@ class MeFragment : TabFragment<MeViewModel, FragmentMeBinding>() {
 
     override fun layoutId(): Int = R.layout.fragment_me
 
-
     override fun initView(savedInstanceState: Bundle?) {
-
+        setFullScreen(true)
         refreshData()
         // 等价于直接设置监听：mDatabind.refresh.setOnRefreshListener
         mDatabind.refresh.init {

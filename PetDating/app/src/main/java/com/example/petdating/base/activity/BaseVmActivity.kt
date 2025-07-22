@@ -53,7 +53,7 @@ abstract class BaseVmActivity<VM: BaseViewModel> : AppCompatActivity() {
     abstract fun dismissLoading()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if (isFullScreen()) fullScreen()
+        fullScreen()
         super.onCreate(savedInstanceState)
         // 根据是否使用DataBinding 以不同方式加载布局
         if (!isUserDb) {
@@ -77,7 +77,11 @@ abstract class BaseVmActivity<VM: BaseViewModel> : AppCompatActivity() {
     * 设置状态栏背景色为透明
     */
    private fun fullScreen() {
-       ImmersionBar.with(this).transparentStatusBar().statusBarColor(R.color.transparent).init()
+       if (isFullScreen()) {
+           ImmersionBar.with(this).transparentStatusBar().statusBarColor(R.color.transparent).init()
+       }else {
+           ImmersionBar.with(this).statusBarColor(R.color.colorPrimary).init()
+       }
 
 /*       window.apply {
            decorView.systemUiVisibility = (

@@ -30,7 +30,7 @@ class MainActivity: BaseActivity<MainViewModel, ActivityMainBinding>() {
 
     override fun viewId(): View = findViewById(R.id.main)
 
-    override fun isFullScreen(): Boolean = true
+    override fun isFullScreen(): Boolean = false
 
     override fun initView(savedInstanceState: Bundle?) {
        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
