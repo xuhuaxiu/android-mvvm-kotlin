@@ -1,6 +1,7 @@
 package com.example.petdating.ui.activity
 
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.view.Window
@@ -8,7 +9,9 @@ import android.view.WindowManager
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
@@ -30,7 +33,6 @@ class MainActivity: BaseActivity<MainViewModel, ActivityMainBinding>() {
     override fun isFullScreen(): Boolean = true
 
     override fun initView(savedInstanceState: Bundle?) {
-
        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
            override fun handleOnBackPressed() {
                val nav = Navigation.findNavController(this@MainActivity, R.id.nav_host_fragment)

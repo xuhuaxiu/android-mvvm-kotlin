@@ -46,6 +46,13 @@ android {
 }
 
 dependencies {
+
+    // 基础依赖包，必须要依赖
+    implementation (libs.immersionbar)
+    // kotlin扩展（可选）
+    implementation (libs.immersionbar.ktx)
+
+
     // blankj
     implementation (libs.utilcodex)
 

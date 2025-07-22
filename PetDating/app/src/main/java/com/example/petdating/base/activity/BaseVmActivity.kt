@@ -11,12 +11,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.blankj.utilcode.util.LogUtils
 import com.example.petdating.R
 import com.example.petdating.base.viewmodel.BaseViewModel
 import com.example.petdating.ext.getVmClazz
 import com.example.petdating.model.NetState
 import com.example.petdating.utils.NetworkStateManager
+import com.gyf.immersionbar.ImmersionBar
+
 
 /**
  *created by xiuer on
@@ -60,12 +61,12 @@ abstract class BaseVmActivity<VM: BaseViewModel> : AppCompatActivity() {
         } else {
             initDataBind()
         }
-        enableEdgeToEdge()
-        ViewCompat.setOnApplyWindowInsetsListener(viewId()) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+//        enableEdgeToEdge()
+//        ViewCompat.setOnApplyWindowInsetsListener(viewId()) { v, insets ->
+//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//            insets
+//        }
         init(savedInstanceState)
     }
 
@@ -75,15 +76,17 @@ abstract class BaseVmActivity<VM: BaseViewModel> : AppCompatActivity() {
     * 设置布局全屏延伸到状态栏下
     * 设置状态栏背景色为透明
     */
-    private fun fullScreen() {
-        LogUtils.d("xiuer-------------> fullScreen" )
-        window.apply {
-            clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-            addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            statusBarColor = Color.TRANSPARENT
-        }
-    }
+   private fun fullScreen() {
+       ImmersionBar.with(this).transparentStatusBar().statusBarColor(R.color.transparent).init()
+
+/*       window.apply {
+           decorView.systemUiVisibility = (
+                   View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                           or View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                   )
+           statusBarColor = Color.TRANSPARENT
+       }*/
+   }
 
     private fun init(savedInstanceState: Bundle?) {
         mViewModel = createViewModel()
