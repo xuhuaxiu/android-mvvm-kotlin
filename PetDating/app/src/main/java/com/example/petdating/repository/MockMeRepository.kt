@@ -27,7 +27,7 @@ class MockMeRepository {
             message = "模拟请求成功",
             data = Model1Bean(
                 name = "模拟用户",
-                img = R.mipmap.facai,
+                img = R.mipmap.img_facai,
                 mobile = "13800138000"
             )
         )
@@ -42,11 +42,11 @@ class MockMeRepository {
             result = successCode,
             message = "模拟列表获取成功",
             data = listOf(
-                Model2Bean(label = "消息通知", img = R.mipmap.app_image_icon_02),
-                Model2Bean(label = "关于我们", img = R.mipmap.app_image_icon_02),
-                Model2Bean(label = "帮助中心", img = R.mipmap.app_image_icon_02),
-                Model2Bean(label = "隐私协议", img = R.mipmap.app_image_icon_02),
-                Model2Bean(label = "语言设置", img = R.mipmap.app_image_icon_02)
+                Model2Bean(label = "消息通知", img = R.mipmap.app_icon_image_02),
+                Model2Bean(label = "关于我们", img = R.mipmap.app_icon_image_02),
+                Model2Bean(label = "帮助中心", img = R.mipmap.app_icon_image_02),
+                Model2Bean(label = "隐私协议", img = R.mipmap.app_icon_image_02),
+                Model2Bean(label = "语言设置", img = R.mipmap.app_icon_image_02)
             )
         )
     }

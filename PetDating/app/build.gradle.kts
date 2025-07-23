@@ -46,7 +46,8 @@ android {
 }
 
 dependencies {
-
+    // 轮播图
+    implementation ("io.github.youth5201314:banner:2.2.2")
     // 基础依赖包，必须要依赖
     implementation (libs.immersionbar)
     // kotlin扩展（可选）

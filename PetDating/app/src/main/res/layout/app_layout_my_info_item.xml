@@ -14,7 +14,7 @@
             android:layout_height="20dp"
             android:layout_centerVertical="true"
             android:scaleType="fitCenter"
-            tools:src="@mipmap/app_image_icon_02"
+            tools:src="@mipmap/app_icon_image_02"
             />
 
         <ImageView

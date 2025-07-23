@@ -19,11 +19,11 @@ import kotlinx.coroutines.supervisorScope
 class MeViewModel : BaseViewModel() {
 
     val list: List<Model2Bean> = listOf(
-        Model2Bean(label = "item1", img = R.mipmap.app_image_icon_02),
-        Model2Bean(label = "item2", img = R.mipmap.app_image_icon_02),
-        Model2Bean(label = "item3", img = R.mipmap.app_image_icon_02),
-        Model2Bean(label = "item4", img = R.mipmap.app_image_icon_02),
-        Model2Bean(label = "item5", img = R.mipmap.app_image_icon_02)
+        Model2Bean(label = "item1", img = R.mipmap.app_icon_image_02),
+        Model2Bean(label = "item2", img = R.mipmap.app_icon_image_02),
+        Model2Bean(label = "item3", img = R.mipmap.app_icon_image_02),
+        Model2Bean(label = "item4", img = R.mipmap.app_icon_image_02),
+        Model2Bean(label = "item5", img = R.mipmap.app_icon_image_02)
     )
     //  private val repository = MeRepository()
    private val repository = MockMeRepository()

@@ -12,19 +12,42 @@
             name="click"
             type="com.example.petdating.ui.fragment.tab.HomeFragment.ProxyClick" />
     </data>
-
-    <FrameLayout
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/dp_30"
-        tools:context=".ui.fragment.tab.HomeFragment">
+        android:paddingTop="@dimen/dp_50">
 
-        <TextView
-            android:id="@+id/home_view"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello home"
-            android:onClick="@{()->click.hello()}"/>
+            android:layout_height="@dimen/dp_100"
+            android:orientation="vertical"
+            tools:context=".ui.fragment.tab.HomeFragment">
 
-    </FrameLayout>
+            <TextView
+                android:id="@+id/demo_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dp_20"
+                android:padding="@dimen/dp_10"
+                android:text="@string/home_banner"
+                />
+            <com.youth.banner.Banner
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:id="@+id/banner"
+                app:banner_radius="15dp"
+                android:layout_margin="10dp"
+                app:banner_auto_loop="true"
+                app:banner_loop_time="3500"
+                android:scrollIndicators="bottom"
+                app:banner_indicator_margin="5dp"
+                app:banner_indicator_normal_color="@color/white"
+                app:banner_indicator_selected_color="@color/colorPrimary"/>
+
+
+        </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>
